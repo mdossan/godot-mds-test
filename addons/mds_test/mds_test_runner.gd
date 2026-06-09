@@ -1,5 +1,7 @@
 class_name MdsTestRunner extends Node
 
+signal wait_test_end
+
 @export var tests_folder_path: String = "res://tests"
 
 func _ready() -> void:
@@ -14,9 +16,10 @@ func run_tests():
 		var test_resource: PackedScene = load(test_path)
 		var test_scene: MdsTestScene = test_resource.instantiate()
 		test_scene.test_finished.connect(_on_test_finished.bind(test_scene))
+		test_scene.tree_exited.connect(_on_test_unmounted)
 		add_child(test_scene)
 		test_scene.test()
-	
+		await wait_test_end
 
 func find_tests(current_path: String, test_paths: Array[String]) -> void:
 	var filenames = DirAccess.get_files_at(current_path)
@@ -28,5 +31,9 @@ func find_tests(current_path: String, test_paths: Array[String]) -> void:
 	for dirname in dirnames:
 		find_tests(current_path + "/" + dirname, test_paths)
 
-func _on_test_finished(test_scene: MdsTestScene):
+func _on_test_finished(result: MdsTestEnums.Result, message: String, test_scene: MdsTestScene):
+	print("[%s] %s" % [MdsTestEnums.Result.keys()[result], message])
 	test_scene.queue_free()
+
+func _on_test_unmounted():
+	wait_test_end.emit()
