@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ca0cfiep8vk0l"]
+
+[ext_resource type="PackedScene" uid="uid://geeddx1ugttx" path="res://addons/mds_test/mds_test_scene.tscn" id="1_a0eqi"]
+[ext_resource type="Script" uid="uid://btkps1hve5it7" path="res://tests/nested/nested_test_scene.gd" id="2_yfweg"]
+
+[node name="NestedTestScene" unique_id=2082957231 instance=ExtResource("1_a0eqi")]
+script = ExtResource("2_yfweg")
