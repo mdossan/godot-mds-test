@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://00tnqbifdawx"]
+
+[ext_resource type="Script" uid="uid://dqpggxf7q6q15" path="res://addons/mds_test/mds_test_runner.gd" id="1_sbfkc"]
+
+[node name="MdsTestRunner" type="Node" unique_id=113682273]
+script = ExtResource("1_sbfkc")
