@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cproubgdj7jwd"]
+
+[ext_resource type="PackedScene" uid="uid://geeddx1ugttx" path="res://addons/mds_test/mds_test_scene.tscn" id="1_8qxie"]
+[ext_resource type="Script" uid="uid://cfi42ycv6dake" path="res://tests/simple_ok_test.gd" id="2_cgbsq"]
+
+[node name="SimpleOkTest" unique_id=2082957231 instance=ExtResource("1_8qxie")]
+script = ExtResource("2_cgbsq")
