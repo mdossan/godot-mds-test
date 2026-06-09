@@ -2,6 +2,9 @@ class_name MdsTestRunner extends Node
 
 @export var tests_folder_path: String = "res://tests"
 
+func _ready() -> void:
+	run_tests()
+
 func run_tests():
 	var test_paths: Array[String] = []
 	find_tests(tests_folder_path, test_paths)
