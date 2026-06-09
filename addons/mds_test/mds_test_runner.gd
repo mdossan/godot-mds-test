@@ -13,7 +13,9 @@ func run_tests():
 		print("Running test: %s" % test_path)
 		var test_resource: PackedScene = load(test_path)
 		var test_scene: MdsTestScene = test_resource.instantiate()
+		test_scene.test_finished.connect(_on_test_finished.bind(test_scene))
 		add_child(test_scene)
+		test_scene.test()
 	
 
 func find_tests(current_path: String, test_paths: Array[String]) -> void:
@@ -25,3 +27,6 @@ func find_tests(current_path: String, test_paths: Array[String]) -> void:
 	var dirnames = DirAccess.get_directories_at(current_path)
 	for dirname in dirnames:
 		find_tests(current_path + "/" + dirname, test_paths)
+
+func _on_test_finished(test_scene: MdsTestScene):
+	test_scene.queue_free()
