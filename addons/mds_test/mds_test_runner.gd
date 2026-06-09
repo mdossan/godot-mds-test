@@ -12,6 +12,7 @@ func run_tests():
 	find_tests(tests_folder_path, test_paths)
 	print("Found %d tests" % test_paths.size())
 	for test_path in test_paths:
+		print("============================")
 		print("Running test: %s" % test_path)
 		var test_resource: PackedScene = load(test_path)
 		var test_scene: MdsTestScene = test_resource.instantiate()
