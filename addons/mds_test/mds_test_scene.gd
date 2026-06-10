@@ -14,3 +14,7 @@ func test():
 func wait_physics_frame():
 	await get_tree().physics_frame
 
+func wait_physics_frames(number: int):
+	for i in range(number):
+		await get_tree().physics_frame
+
