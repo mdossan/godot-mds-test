@@ -18,3 +18,10 @@ func wait_physics_frames(number: int):
 	for i in range(number):
 		await get_tree().physics_frame
 
+func input_press(action: String) -> void:
+	await get_tree().physics_frame
+	var ev = InputEventAction.new()
+	ev.action = action
+	ev.pressed = true
+	Input.parse_input_event(ev)
+	Input.flush_buffered_events()
