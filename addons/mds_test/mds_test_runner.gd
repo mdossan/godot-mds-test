@@ -19,6 +19,8 @@ func run_tests():
 		test_scene.test_finished.connect(_on_test_finished.bind(test_scene))
 		test_scene.tree_exited.connect(_on_test_unmounted)
 		add_child(test_scene)
+		# We wait an initial physics_frame to be sure all area and collision are init
+		await get_tree().physics_frame
 		test_scene.test()
 		await wait_test_end
 
