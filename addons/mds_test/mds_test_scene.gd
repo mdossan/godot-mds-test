@@ -10,3 +10,7 @@ func fail(message: String = "Test has failed"):
 
 func test():
 	test_finished.emit(MdsTestEnums.Result.FAILURE, "No test function declared")
+
+func wait_physics_frame():
+	await get_tree().physics_frame
+
