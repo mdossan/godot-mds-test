@@ -28,6 +28,12 @@ func run_tests():
 		await test_scene.test()
 		test_scene.queue_free()
 		await wait_test_end
+	print("")
+	print("============================")
+	print("= TESTS RESULTS            =")
+	print("============================")
+	print("Tests: %d" % [test_paths.size()])
+	print("Assertions: %d/%d" % [_assertion_ok, _assertion_amount])
 
 func find_tests(current_path: String, test_paths: Array[String]) -> void:
 	var filenames = DirAccess.get_files_at(current_path)
