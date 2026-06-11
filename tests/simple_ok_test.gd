@@ -1,4 +1,4 @@
 extends MdsTestScene
 
 func test():
-	succeed()
+	assert_eq(true, true, "Simple test")
