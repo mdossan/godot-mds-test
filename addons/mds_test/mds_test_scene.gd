@@ -1,15 +1,8 @@
-class_name MdsTestScene extends Node
+@abstract class_name MdsTestScene extends Node
 
-signal test_finished(result: MdsTestEnums.Result, message: String)
+signal assertion(is_ok: bool, message: String)
 
-func succeed(message: String = "Test executed with no error"):
-	test_finished.emit(MdsTestEnums.Result.SUCCESS, message)
-
-func fail(message: String = "Test has failed"):
-	test_finished.emit(MdsTestEnums.Result.FAILURE, message)
-
-func test():
-	test_finished.emit(MdsTestEnums.Result.FAILURE, "No test function declared")
+@abstract func test() -> void
 
 func wait_physics_frame():
 	await get_tree().physics_frame
@@ -25,3 +18,21 @@ func input_press(action: String) -> void:
 	ev.pressed = true
 	Input.parse_input_event(ev)
 	Input.flush_buffered_events()
+
+func assert_is_valid(is_valid: bool, message: String):
+	assertion.emit(is_valid, message)
+
+func assert_eq(actual, value, message: String):
+	assert_is_valid(actual == value, message)
+
+func assert_lt(actual, value, message: String):
+	assert_is_valid(actual < value, message)
+
+func assert_gt(actual, value, message: String):
+	assert_is_valid(actual > value, message)
+
+func assert_lte(actual, value, message: String):
+	assert_is_valid(actual <= value, message)
+
+func assert_gte(actual, value, message: String):
+	assert_is_valid(actual >= value, message)
