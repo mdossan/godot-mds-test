@@ -45,10 +45,6 @@ func find_tests(current_path: String, test_paths: Array[String]) -> void:
 	for dirname in dirnames:
 		find_tests(current_path + "/" + dirname, test_paths)
 
-func _on_test_finished(result: MdsTestEnums.Result, message: String, test_scene: MdsTestScene):
-	print("[%s] %s" % [MdsTestEnums.Result.keys()[result], message])
-	test_scene.queue_free()
-
 func _on_test_unmounted():
 	wait_test_end.emit()
 
