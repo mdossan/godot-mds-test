@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d28qdrs10uphj"]
+
+[ext_resource type="PackedScene" uid="uid://geeddx1ugttx" path="res://addons/mds_test/mds_test_scene.tscn" id="1_3nqx1"]
+[ext_resource type="Script" uid="uid://ce2xvn2hjqt5o" path="res://tests/multiple_frame_test.gd" id="2_3nqx1"]
+
+[node name="MultipleFrameTest" unique_id=2082957231 instance=ExtResource("1_3nqx1")]
+script = ExtResource("2_3nqx1")
