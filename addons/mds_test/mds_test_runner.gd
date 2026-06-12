@@ -58,3 +58,4 @@ func _on_test_assertion(is_ok: bool, message: String):
 		_assertion_ok += 1;
 	else:
 		_assertion_fail += 1;
+		push_error(message)
