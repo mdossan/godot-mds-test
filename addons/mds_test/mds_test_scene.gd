@@ -1,8 +1,9 @@
-@abstract class_name MdsTestScene extends Node
+class_name MdsTestScene extends Node
 
 signal assertion(is_ok: bool, message: String)
 
-@abstract func test() -> void
+func test() -> void:
+	assert_eq(true, false, "No test defined")
 
 func wait_physics_frame():
 	await get_tree().physics_frame
