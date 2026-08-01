@@ -20,6 +20,14 @@ func input_press(action: String) -> void:
 	Input.parse_input_event(ev)
 	Input.flush_buffered_events()
 
+func input_mouse(relative_x: int, relative_y: int) -> void:
+	await get_tree().physics_frame
+	var event: InputEventMouseMotion = InputEventMouseMotion.new()
+	event.relative.x = relative_x
+	event.relative.y = relative_y
+	Input.parse_input_event(event)
+	Input.flush_buffered_events()
+
 func assert_is_valid(is_valid: bool, message: String):
 	assertion.emit(is_valid, message)
 
