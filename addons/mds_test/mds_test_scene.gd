@@ -31,8 +31,26 @@ func input_mouse(relative_x: int, relative_y: int) -> void:
 func assert_is_valid(is_valid: bool, message: String):
 	assertion.emit(is_valid, message)
 
+func assert_is_instance_valid(value, message: String):
+	assert_is_valid(is_instance_valid(value), message)
+
+func assert_is_not_instance_valid(value, message: String):
+	assert_is_valid(!is_instance_valid(value), message)
+
+func assert_true(actual: bool, message: String):
+	assert_is_valid(actual, message)
+
+func assert_null(actual, message: String):
+	assert_is_valid(actual == null, message)
+
+func assert_false(actual: bool, message: String):
+	assert_is_valid(not actual, message)
+
 func assert_eq(actual, value, message: String):
 	assert_is_valid(actual == value, message)
+
+func assert_neq(actual, value, message: String):
+	assert_is_valid(actual != value, message)
 
 func assert_lt(actual, value, message: String):
 	assert_is_valid(actual < value, message)
