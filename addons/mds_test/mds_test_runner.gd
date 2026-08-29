@@ -34,6 +34,8 @@ func run_tests():
 	print("============================")
 	print("Tests: %d" % [test_paths.size()])
 	print("Assertions: %d/%d" % [_assertion_ok, _assertion_amount])
+	await get_tree().create_timer(.1).timeout
+	get_tree().quit()
 
 func find_tests(current_path: String, test_paths: Array[String]) -> void:
 	var filenames = DirAccess.get_files_at(current_path)
