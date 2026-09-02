@@ -20,6 +20,14 @@ func input_press(action: String) -> void:
 	Input.parse_input_event(ev)
 	Input.flush_buffered_events()
 
+func input_release(action: String) -> void:
+	await get_tree().physics_frame
+	var ev = InputEventAction.new()
+	ev.action = action
+	ev.pressed = false
+	Input.parse_input_event(ev)
+	Input.flush_buffered_events()
+
 func input_mouse(relative_x: int, relative_y: int) -> void:
 	await get_tree().physics_frame
 	var event: InputEventMouseMotion = InputEventMouseMotion.new()
