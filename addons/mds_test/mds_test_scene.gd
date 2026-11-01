@@ -36,6 +36,33 @@ func input_mouse(relative_x: int, relative_y: int) -> void:
 	Input.parse_input_event(event)
 	Input.flush_buffered_events()
 
+func input_mouse_glob(relative_x: int, relative_y: int) -> void:
+	await get_tree().physics_frame
+	var event: InputEventMouseMotion = InputEventMouseMotion.new()
+	event.global_position.x = relative_x
+	event.global_position.y = relative_y
+	Input.parse_input_event(event)
+	Input.flush_buffered_events()
+
+func input_mouse_move(p1: Vector2, p2: Vector2, steps: int) -> void:
+	for i in range(steps):
+		await get_tree().physics_frame
+		var event: InputEventMouseMotion = InputEventMouseMotion.new()
+		event.position.x = lerp(p1.x, p2.x, float(i) / float(steps))
+		event.position.y = lerp(p1.y, p2.y, float(i) / float(steps))
+		Input.parse_input_event(event)
+		Input.flush_buffered_events()
+
+func input_mouse_click(x: float, y: float, pressed: bool = true, button_index: MouseButton = MouseButton.MOUSE_BUTTON_LEFT) -> void:
+	await get_tree().physics_frame
+	var event: InputEventMouseButton = InputEventMouseButton.new()
+	event.position.x = x
+	event.position.y = y
+	event.pressed = pressed
+	event.button_index = button_index
+	Input.parse_input_event(event)
+	Input.flush_buffered_events()
+
 func assert_is_valid(is_valid: bool, message: String):
 	assertion.emit(is_valid, message)
 
