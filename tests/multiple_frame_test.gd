@@ -1,4 +1,4 @@
-extends MdsTestScene
+extends TestScene
 
 func test():
 	await wait_physics_frame()

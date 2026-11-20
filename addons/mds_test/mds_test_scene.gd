@@ -1,4 +1,4 @@
-class_name MdsTestScene extends Node
+class_name TestScene extends Node
 
 signal assertion(is_ok: bool, message: String)
 
