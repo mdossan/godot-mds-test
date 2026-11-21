@@ -2,6 +2,14 @@ class_name TestScene extends Node
 
 signal assertion(is_ok: bool, message: String)
 
+var test_resource: TestResource = preload("res://addons/mds_test/test_resource.tres")
+var success: bool = true
+
+func _exit_tree() -> void:
+	if not success:
+		return
+	test_resource.success_test_count += 1
+
 func test() -> void:
 	assert_eq(true, false, "No test defined")
 
@@ -64,7 +72,9 @@ func input_mouse_click(x: float, y: float, pressed: bool = true, button_index: M
 	Input.flush_buffered_events()
 
 func assert_is_valid(is_valid: bool, message: String):
-	assertion.emit(is_valid, message)
+	if not is_valid:
+		success = false
+	test_resource.record_assertion(is_valid, message)
 
 func assert_is_instance_valid(value, message: String):
 	assert_is_valid(is_instance_valid(value), message)
