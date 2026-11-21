@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TestResource" format=3 uid="uid://bmxuhsl8poloe"]
+
+[ext_resource type="Script" uid="uid://b70nu1m4c1yh2" path="res://addons/mds_test/test_resource.gd" id="1_amn7l"]
+
+[resource]
+script = ExtResource("1_amn7l")
+metadata/_custom_type_script = "uid://b70nu1m4c1yh2"
