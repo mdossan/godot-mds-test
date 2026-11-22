@@ -11,7 +11,7 @@ func _exit_tree() -> void:
 	test_resource.success_test_count += 1
 
 func test() -> void:
-	assert_eq(true, false, "No test defined")
+	Assert.equal(true, false, "No test defined")
 
 func wait_physics_frame():
 	await get_tree().physics_frame
@@ -70,41 +70,3 @@ func input_mouse_click(x: float, y: float, pressed: bool = true, button_index: M
 	event.button_index = button_index
 	Input.parse_input_event(event)
 	Input.flush_buffered_events()
-
-func assert_is_valid(is_valid: bool, message: String):
-	if not is_valid:
-		success = false
-	test_resource.record_assertion(is_valid, message)
-
-func assert_is_instance_valid(value, message: String):
-	assert_is_valid(is_instance_valid(value), message)
-
-func assert_is_not_instance_valid(value, message: String):
-	assert_is_valid(!is_instance_valid(value), message)
-
-func assert_true(actual: bool, message: String):
-	assert_is_valid(actual, message)
-
-func assert_null(actual, message: String):
-	assert_is_valid(actual == null, message)
-
-func assert_false(actual: bool, message: String):
-	assert_is_valid(not actual, message)
-
-func assert_eq(actual, value, message: String):
-	assert_is_valid(actual == value, message)
-
-func assert_neq(actual, value, message: String):
-	assert_is_valid(actual != value, message)
-
-func assert_lt(actual, value, message: String):
-	assert_is_valid(actual < value, message)
-
-func assert_gt(actual, value, message: String):
-	assert_is_valid(actual > value, message)
-
-func assert_lte(actual, value, message: String):
-	assert_is_valid(actual <= value, message)
-
-func assert_gte(actual, value, message: String):
-	assert_is_valid(actual >= value, message)

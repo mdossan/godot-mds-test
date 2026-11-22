@@ -1,4 +1,4 @@
 extends TestScene
 
 func test():
-	assert_eq(true, true, "Nested test is ok")
+	Assert.equal(true, true, "Nested test is ok")

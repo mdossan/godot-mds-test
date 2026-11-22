@@ -1,6 +1,6 @@
 extends TestScene
 
 func test():
-	assert_eq(true, true, "should be equal to true")
-	assert_eq(42, 42, "should be equal to 42")
-	assert_eq("hello", "hello", "should be equal to 'hello'")
+	Assert.equal(true, true, "should be equal to true")
+	Assert.equal(42, 42, "should be equal to 42")
+	Assert.equal("hello", "hello", "should be equal to 'hello'")

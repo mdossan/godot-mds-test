@@ -2,8 +2,8 @@ extends TestScene
 
 func test():
 	await wait_physics_frame()
-	assert_eq(true, true, "Frame 1 test")
+	Assert.equal(true, true, "Frame 1 test")
 	await wait_physics_frame()
-	assert_eq(42, 42, "Frame 2 test")
+	Assert.equal(42, 42, "Frame 2 test")
 	await wait_physics_frame()
-	assert_eq("foo", "foo", "Frame 3 test")
+	Assert.equal("foo", "foo", "Frame 3 test")
