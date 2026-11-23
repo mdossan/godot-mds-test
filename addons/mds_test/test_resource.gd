@@ -11,7 +11,7 @@ func record_assertion(is_ok: bool, message: String):
 	var status = "OK"
 	if not is_ok:
 		status = "ERROR"
-	print("[%s] %s" % [status, message])
+		print("[%s] %s" % [status, message])
 	assertion_counter += 1
 	if is_ok:
 		assertion_success_counter += 1
