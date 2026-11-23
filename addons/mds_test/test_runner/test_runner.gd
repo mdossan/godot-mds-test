@@ -5,7 +5,7 @@ class_name TestRunner extends Node
 var test_resource: TestResource = preload("res://addons/mds_test/test_resource.tres")
 
 func _ready() -> void:
-	run_tests()
+	await run_tests()
 	exit()
 
 func run_tests():
